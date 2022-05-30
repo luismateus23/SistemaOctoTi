@@ -10,7 +10,7 @@ using SistemaOctoTi.Data;
 namespace SistemaOctoTi.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20220529201028_CriandoDataBase")]
+    [Migration("20220530172654_CriandoDataBase")]
     partial class CriandoDataBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

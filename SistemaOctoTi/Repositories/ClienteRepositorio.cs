@@ -33,7 +33,7 @@ namespace SistemaOctoTi.Repositories
             {
                 throw new Exception("Houve um erro na Exclusão do Cliente!");
             }
-            _bancoContext.Remove(clienteDB);
+            _bancoContext.Cliente.Remove(clienteDB);
             _bancoContext.SaveChanges();
 
             return true;

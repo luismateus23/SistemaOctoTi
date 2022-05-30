@@ -86,8 +86,8 @@ namespace SistemaOctoTi.Controllers
         public IActionResult Criar(HomeIndexModel home)
         {
        
-            home.Endereco.CodigoCliente = home.Cliente;
-            home.Telefone.CodigoCliente = home.Cliente;          
+            /*home.Endereco.CodigoCliente = home.Cliente;
+            home.Telefone.CodigoCliente = home.Cliente;*/          
 
             _clienteRepositorio.Adicionar(home.Cliente);
             _enderecoRepositorio.Adicionar(home.Endereco);
