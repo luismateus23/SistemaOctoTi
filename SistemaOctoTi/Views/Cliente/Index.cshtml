@@ -1,0 +1,44 @@
+﻿@model List<ClienteModel>
+@{
+    ViewData["Title"] = "Lista de Clientes";
+}
+
+<a role="button" asp-controller="Cliente" asp-action="Criar" class="btn btn-primary btn-block"> Adicionar Novo Cliente </a>
+
+<div class="container text-center container-menu mt-3">
+    <h1>Lista de Clientes</h1>
+</div>
+
+
+<table class="table mt-2 bg-table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">CPF</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+        @if(Model != null && Model.Any())
+        {
+            foreach(ClienteModel cliente in Model)
+            {
+            <tr>
+              <th scope="row">@cliente.Id</th>
+                  <td>@cliente.Nome</td>
+                  <td>@cliente.Email</td>
+                  <td>@cliente.CPF_CNPJ</td>
+                  <td>
+
+              <div class="btn-group">
+                 <a role="button" class="btn btn-primary" asp-route-id="@cliente.Id" asp-action="Editar" asp-controller="Cliente">Editar</a>              
+                  <a role="button" class="btn btn-dark" asp-route-id="@cliente.Id" asp-action="ApagarConfirmacao" asp-controller="Cliente">Apagar</a>
+             </div>
+              </td>
+            </tr>  
+            }
+        } 
+  </tbody>
+</table>

@@ -1,0 +1,211 @@
+﻿@model HomeIndexModel
+@{
+    ViewData["Title"] = "Cadastrar Cliente";
+}
+
+<div class="container container-menu text-center">
+     <h1 class="display-4">Cadastro de Cliente</h1>
+</div>
+
+<div class="container container-menu mt-1">
+
+    <form  asp-controller="Cliente" asp-action="Criar" method="post" class="container">
+
+    <div class="row">
+         
+      <div class="form-group col-md">
+        <label for="txtNome">Nome do cliente:</label>
+        <input type="text" asp-for="Cliente.Nome" class="form-control" maxlength="45" id="txtNome" placeholder="Digite o nome...">
+      </div>   
+
+      <div class="form-group col-md">
+        <label for="txtEmail">Endereço de e-mail:</label>
+        <input type="email" class="form-control" asp-for="Cliente.Email" maxlength="45" id="txtEmail"  placeholder="Digite o email...">
+      </div>
+
+    </div>
+
+
+    <div class="row">           
+
+            <div class="form-group col-md">
+                <label>Tipo:</label>
+                <select class="form-control" asp-for="Cliente.TipoCliente" id="sltCPF_CNPJ">
+                    <option selected value="1">CPF</option>
+                    <option value="2">CNPJ</option>
+                </select>
+            </div>
+
+            <div class="form-group  col-md">
+                <label id="lblCPF_CNPJ">CPF</label>
+                <input type="text" class="form-control" maxlength="14" id="txtCPF_CNPJ" asp-for="Cliente.CPF_CNPJ" onpaste="return false" placeholder="000.000.000-00">               
+            </div>     
+         
+
+    </div>
+
+      <div class="row">
+
+           <div class="form-group col-md" id="divEstado" style="display:none;">
+            <label for="sltEstado">Estado:</label>
+            <select  class="form-control"  id="sltEstado">
+                <option value="1">AC</option>
+                <option value="2">AL</option>
+                <option value="3">AP</option>
+                <option value="4">AM</option>
+                <option value="5">BA</option>
+                <option value="6">CE</option>
+                <option value="7">DF</option>
+                <option value="8">ES</option>
+                <option value="9">GO</option>
+                <option value="10">MA</option>
+                <option value="11">MT</option>
+                <option value="12">MS</option>
+                <option value="13">MG</option>
+                <option value="14">PA</option>
+                <option value="15">PB</option>
+                <option value="16">PR</option>
+                <option value="17">PE</option>
+                <option value="18">PI</option>
+                <option value="19">RJ</option>
+                <option value="20">RN</option>
+                <option value="21">RS</option>
+                <option value="22">RO</option>
+                <option value="23">RR</option>
+                <option value="24">SP</option>
+                <option value="25">SC</option>
+                <option value="26">SE</option>
+                <option value="27">TO</option>
+            </select>
+          </div>
+
+           <div class="form-group col-md">
+            <label id="lblDocumento">RG:</label>
+            <input asp-for="Cliente.RG_IE" type="text" class="form-control"  onpaste="return false" maxlength="12" id="txtDocumento"  placeholder="00.000.000-0">
+          </div>
+
+          <div class="form-group col-md">
+              <label id="lblData">Data de Nascimento:</label>
+              <input asp-for="Cliente.DataNascimento_DataFundacao" type="date" class="form-control"  onpaste="return false" maxlength="10" id="txtData">
+          </div>
+
+      </div>
+
+
+      <div class="row">
+          <div class="form-group col-md">
+              <label>Tipo Telefone:</label>
+              <select asp-for="Telefone.TipoTelefone" id="sltTelefone" class="form-control">
+                  <option value="1">Celular</option>
+                  <option value="2">Residencial</option>
+                  <option value="3">Comercial</option>
+              </select>
+          </div>
+
+  
+          <div id="divNumeroTelefone" class="form-group col-md">
+              <label id="lblNumeroTelefone">Celular:</label>
+              <input type="text" asp-for="Telefone.NumeroTelefone" id="txtNumeroTelefone" placeholder="00000-0000"  onpaste="return false" maxlength="10"  class="form-control" />
+          </div>
+
+          <div class="form-group col-md">
+              <label>DDD:</label>
+              <input type="text" asp-for="Telefone.DDD" maxlength="3" id="txtDDD" placeholder="Ex: 017" class="form-control" />
+          </div>
+      </div>
+
+      <!-- -->
+      <div class="row">
+
+        <div class="form-group col-md">
+            <label>Tipo Endereço:</label>
+            <select asp-for="Endereco.TipoEndereco" id="sltTipoEndereco" class="form-control">
+                <option value="1">Cobrança</option>
+                <option value="2">Comercial</option>
+                <option value="3">Correspondência</option>
+                <option value="4">Entrega</option>
+                <option value="5">Residencial</option>
+            </select>
+        </div>
+        <div class="form-group col-md">
+            <label>Logradouro:</label>
+            <input asp-for="Endereco.Logradouro" class="form-control" maxlength="45" type="text" id="txtLogradouro"  placeholder="Ex: Rua das Ameixas"  />
+        </div>
+        <div class="form-group col-md">
+            <label>Número:</label>
+               <input asp-for="Endereco.Numero" class="form-control"  min="0" type="number" id="txtNumero"  placeholder="Ex: 2710" />
+        </div>
+
+      </div>
+
+      <div class="row">
+
+          <div class="form-group col-md">
+             <label for="sltUF">UF:</label>
+            <select  asp-for="Endereco.UF" class="form-control"  id="sltUF">
+                <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AP">AP</option>
+                <option value="AM">AM</option>
+                <option value="BA">BA</option>
+                <option value="CE">CE</option>
+                <option value="DF">DF</option>
+                <option value="ES">ES</option>
+                <option value="ES">ES</option>
+                <option value="MA">MA</option>
+                <option value="MT">MT</option>
+                <option value="MS">MS</option>
+                <option value="MG">MG</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PR">PR</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RS">RS</option>
+                <option value="RO">RO</option>
+                <option value="RR">RR</option>
+                <option value="SP">SP</option>
+                <option value="SC">SC</option>
+                <option value="SE">SE</option>
+                <option value="TO">TO</option>
+            </select>
+          </div> 
+
+          <div class="form-group col-md">
+              <label>Cidade: </label>
+              <input asp-for="Endereco.Cidade" class="form-control" id="txtCidade" type="text" maxlength="45" placeholder="Ex: São Paulo" />
+          </div> 
+
+          <div class="form-group col-md">
+                 <label>CEP: </label>
+              <input asp-for="Endereco.CEP" class="form-control" id="txtCEP" type="text" maxlength="9" placeholder="Ex: 15091-250" />
+          </div> 
+      </div>
+    
+      <div class="row">
+          <div class="form-group col-md">
+              <label>Complemento:</label>
+              <input asp-for="Endereco.Complemento" type="text" id="txtComplemento" maxlength="45"  class="form-control" placeholder="Ex: Portão Preto." />
+          </div>
+           <div class="form-group col-md">
+               <label>Bairro:</label>
+               <input asp-for="Endereco.Bairro" type="text" id="txtBairro" maxlength="45" class="form-control" placeholder="Ex: Jd. das Rosas"/>
+          </div>
+      </div>
+
+                     
+
+      <div class=row>                
+              <div class="form-group col-md">
+                  <button type="submit" class="btn btn-primary btn-block">Adicionar</button>    
+              </div>
+               <div class="form-group col-md">
+                   <a role="button" class="btn btn-secondary btn-block" asp-action="Index" asp-controller="Cliente">Voltar</a>
+              </div>
+      </div>
+
+    </form>
+
+</div>

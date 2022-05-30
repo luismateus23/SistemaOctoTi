@@ -1,0 +1,107 @@
+﻿@{
+    ViewData["Title"] = "Novo Endereço";
+}
+
+<div class="container container-menu text-center">
+     <h1 class="display-4">Novo Endereço</h1>
+</div>
+
+<div data-offset="0" class="container container-menu mt-1">
+    <form class="container">
+                 
+     
+      <!-- -->
+      <div class="row">
+
+        <div class="form-group col-md">
+            <label>Tipo Endereço:</label>
+            <select id="sltTipoEndereco" class="form-control">
+                <option value="1">Cobrança</option>
+                <option value="2">Comercial</option>
+                <option value="3">Correspondência</option>
+                <option value="4">Entrega</option>
+                <option value="5">Residencial</option>
+            </select>
+        </div>
+        <div class="form-group col-md">
+            <label>Logradouro:</label>
+            <input class="form-control" maxlength="45" type="text" id="txtLogradouro"  placeholder="Ex: Rua das Ameixas"  />
+        </div>
+        <div class="form-group col-md">
+            <label>Número:</label>
+               <input class="form-control"  min="0" max="1000" step="1.0" type="number" id="txtNumero"  placeholder="Ex: 2710" />
+        </div>
+
+      </div>
+
+      <div class="row">
+
+          <div class="form-group col-md">
+             <label for="sltUF">UF:</label>
+            <select  class="form-control"  id="sltUF">
+                <option value="1">AC</option>
+                <option value="2">AL</option>
+                <option value="3">AP</option>
+                <option value="4">AM</option>
+                <option value="5">BA</option>
+                <option value="6">CE</option>
+                <option value="7">DF</option>
+                <option value="8">ES</option>
+                <option value="9">GO</option>
+                <option value="10">MA</option>
+                <option value="11">MT</option>
+                <option value="12">MS</option>
+                <option value="13">MG</option>
+                <option value="14">PA</option>
+                <option value="15">PB</option>
+                <option value="16">PR</option>
+                <option value="17">PE</option>
+                <option value="18">PI</option>
+                <option value="19">RJ</option>
+                <option value="20">RN</option>
+                <option value="21">RS</option>
+                <option value="22">RO</option>
+                <option value="23">RR</option>
+                <option value="24">SP</option>
+                <option value="25">SC</option>
+                <option value="26">SE</option>
+                <option value="27">TO</option>
+            </select>
+          </div> 
+
+          <div class="form-group col-md">
+              <label>Cidade: </label>
+              <input class="form-control" id="txtCidade" type="text" maxlength="45" placeholder="Ex: São Paulo" />
+          </div> 
+
+          <div class="form-group col-md">
+                 <label>CEP: </label>
+              <input class="form-control" id="txtCEP" type="text" maxlength="9" placeholder="Ex: 15091-250" />
+          </div> 
+      </div>
+    
+      <div class="row">
+          <div class="form-group col-md">
+              <label>Complemento:</label>
+              <input type="text" id="txtComplemento" maxlength="45"  class="form-control" placeholder="Ex: Portão Preto." />
+          </div>
+           <div class="form-group col-md">
+               <label>Bairro:</label>
+               <input type="text" id="txtBairro" maxlength="45" class="form-control" placeholder="Ex: Jd. das Rosas"/>
+          </div>
+      </div>
+
+                     
+
+      <div class=row>                
+              <div class="form-group col-md">
+                  <button type="submit" class="btn btn-primary btn-block">Adicionar</button>    
+              </div>
+               <div class="form-group col-md">
+                   <a role="button" class="btn btn-secondary btn-block" asp-action="Index" asp-controller="Cliente">Voltar</a>
+              </div>
+      </div>
+
+    </form>
+
+</div>
