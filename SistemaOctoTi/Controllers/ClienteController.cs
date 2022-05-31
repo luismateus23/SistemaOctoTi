@@ -97,7 +97,8 @@ namespace SistemaOctoTi.Controllers
             home.Cliente.QtdTelefone = 1;
 
             home.Telefone.CodigoCliente = home.Cliente;
-            home.Endereco.CodigoCliente = home.Cliente;
+            home.Endereco.CodigoCliente = home.Cliente;       
+
 
             _clienteRepositorio.Adicionar(home.Cliente);
             _enderecoRepositorio.Adicionar(home.Endereco);

@@ -10,7 +10,7 @@ using SistemaOctoTi.Data;
 namespace SistemaOctoTi.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    [Migration("20220530172654_CriandoDataBase")]
+    [Migration("20220531165942_CriandoDataBase")]
     partial class CriandoDataBase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -30,9 +30,6 @@ namespace SistemaOctoTi.Migrations
 
                     b.Property<string>("CPF_CNPJ")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("ClienteModelId")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
@@ -59,8 +56,6 @@ namespace SistemaOctoTi.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClienteModelId");
 
                     b.ToTable("Cliente");
                 });
@@ -132,13 +127,6 @@ namespace SistemaOctoTi.Migrations
                     b.ToTable("Telefone");
                 });
 
-            modelBuilder.Entity("SistemaOctoTi.Models.ClienteModel", b =>
-                {
-                    b.HasOne("SistemaOctoTi.Models.ClienteModel", null)
-                        .WithMany("Clientes")
-                        .HasForeignKey("ClienteModelId");
-                });
-
             modelBuilder.Entity("SistemaOctoTi.Models.EnderecoModel", b =>
                 {
                     b.HasOne("SistemaOctoTi.Models.ClienteModel", "CodigoCliente")
@@ -151,7 +139,7 @@ namespace SistemaOctoTi.Migrations
             modelBuilder.Entity("SistemaOctoTi.Models.TelefoneModel", b =>
                 {
                     b.HasOne("SistemaOctoTi.Models.ClienteModel", "CodigoCliente")
-                        .WithMany()
+                        .WithMany("Telefones")
                         .HasForeignKey("CodigoClienteId");
 
                     b.Navigation("CodigoCliente");
@@ -159,9 +147,9 @@ namespace SistemaOctoTi.Migrations
 
             modelBuilder.Entity("SistemaOctoTi.Models.ClienteModel", b =>
                 {
-                    b.Navigation("Clientes");
-
                     b.Navigation("Enderecos");
+
+                    b.Navigation("Telefones");
                 });
 #pragma warning restore 612, 618
         }

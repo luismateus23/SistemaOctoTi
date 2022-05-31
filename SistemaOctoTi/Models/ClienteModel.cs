@@ -16,7 +16,7 @@ namespace SistemaOctoTi.Models
         public DateTime DataCadastro { get; set; }
         public int QtdTelefone { get; set; }
         public int QtdEndereco { get; set; }
-        public ICollection<ClienteModel>  Clientes { get; set; }
+        public ICollection<TelefoneModel>  Telefones { get; set; }
         public ICollection<EnderecoModel> Enderecos { get; set; }
     }
 }

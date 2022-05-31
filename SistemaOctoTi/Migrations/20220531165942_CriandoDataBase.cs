@@ -21,18 +21,11 @@ namespace SistemaOctoTi.Migrations
                     DataNascimento_DataFundacao = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DataCadastro = table.Column<DateTime>(type: "datetime2", nullable: false),
                     QtdTelefone = table.Column<int>(type: "int", nullable: false),
-                    QtdEndereco = table.Column<int>(type: "int", nullable: false),
-                    ClienteModelId = table.Column<int>(type: "int", nullable: true)
+                    QtdEndereco = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cliente", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Cliente_Cliente_ClienteModelId",
-                        column: x => x.ClienteModelId,
-                        principalTable: "Cliente",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -83,11 +76,6 @@ namespace SistemaOctoTi.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Cliente_ClienteModelId",
-                table: "Cliente",
-                column: "ClienteModelId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Endereco_CodigoClienteId",
