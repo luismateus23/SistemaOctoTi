@@ -32,9 +32,10 @@ namespace SistemaOctoTi.Controllers
         public IActionResult Editar(int id)
         {
             HomeIndexModel model = new HomeIndexModel();
+
             model.Cliente = _clienteRepositorio.BuscarPorId(id);
             model.Telefone = _telefoneRepositorio.BuscarPorId(id);
-            model.Endereco = _enderecoRepositorio.BuscarPorId(id);
+            model.Endereco = _enderecoRepositorio.BuscarPorId(id);           
 
 
             return View(model);
@@ -85,9 +86,12 @@ namespace SistemaOctoTi.Controllers
         [HttpPost] 
         public IActionResult Criar(HomeIndexModel home)
         {
-       
-            /*home.Endereco.CodigoCliente = home.Cliente;
-            home.Telefone.CodigoCliente = home.Cliente;*/          
+
+            home.Cliente.QtdEndereco = 1;
+            home.Cliente.QtdTelefone = 1;
+
+          /*  home.Telefone.CodigoCliente = home.Cliente;
+            home.Endereco.CodigoCliente = home.Cliente;*/
 
             _clienteRepositorio.Adicionar(home.Cliente);
             _enderecoRepositorio.Adicionar(home.Endereco);

@@ -16,8 +16,6 @@ namespace SistemaOctoTi.Repositories
         }
         public ClienteModel Adicionar(ClienteModel cliente)
         {          
-            cliente.QtdEndereco = 1;
-            cliente.QtdTelefone = 1;
             cliente.DataCadastro = DateTime.Now;
 
             _bancoContext.Cliente.Add(cliente);
@@ -32,7 +30,8 @@ namespace SistemaOctoTi.Repositories
             if (clienteDB == null)
             {
                 throw new Exception("Houve um erro na Exclusão do Cliente!");
-            }
+            }            
+
             _bancoContext.Cliente.Remove(clienteDB);
             _bancoContext.SaveChanges();
 
