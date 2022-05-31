@@ -5,6 +5,7 @@ namespace SistemaOctoTi.Repositories
 {
     public interface ITelefoneRepositorio
     {
+        bool Apagar(int id);    
         TelefoneModel Atualizar(TelefoneModel telefone);
         TelefoneModel BuscarPorId(int id);  
         List<TelefoneModel> BuscarTodos();

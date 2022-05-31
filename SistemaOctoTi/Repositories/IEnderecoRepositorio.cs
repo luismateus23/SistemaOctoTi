@@ -5,6 +5,7 @@ namespace SistemaOctoTi.Repositories
 {
     public interface IEnderecoRepositorio
     {
+        bool Apagar(int id);
         EnderecoModel Atualizar(EnderecoModel endereco);
         EnderecoModel BuscarPorId(int id);  
         List<EnderecoModel> BuscarTodos();

@@ -22,6 +22,20 @@ namespace SistemaOctoTi.Repositories
             return telefone;    
         }
 
+        public bool Apagar(int id)
+        {
+            TelefoneModel telefone = BuscarPorId(id);
+            if(telefone == null)
+            {
+                throw new Exception("Erro ao apagar telefone!");
+            }
+
+            _bancoContext.Telefone.Remove(telefone);
+            _bancoContext.SaveChanges();
+
+            return true;
+        }
+
         public TelefoneModel Atualizar(TelefoneModel telefone)
         {
             TelefoneModel telefoneDB = BuscarPorId(telefone.Id);

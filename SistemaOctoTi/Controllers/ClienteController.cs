@@ -43,10 +43,14 @@ namespace SistemaOctoTi.Controllers
 
         public IActionResult ApagarConfirmacao(int id)
         {
-            ClienteModel cliente = _clienteRepositorio.BuscarPorId(id);
+            HomeIndexModel home = new HomeIndexModel();
 
+            home.Cliente = _clienteRepositorio.BuscarPorId(id);
 
-            return View(cliente);
+            home.Endereco = _enderecoRepositorio.BuscarPorId(id); /*Provisory method*/
+            home.Telefone = _telefoneRepositorio.BuscarPorId(id); /*Provisory method*/
+
+            return View(home);
         }
 
         public IActionResult NovoTelefone(int id)
@@ -69,6 +73,8 @@ namespace SistemaOctoTi.Controllers
 
         public IActionResult Apagar(int id)
         {
+            _enderecoRepositorio.Apagar(id);
+            _telefoneRepositorio.Apagar(id);
             _clienteRepositorio.Apagar(id);
 
             return RedirectToAction("Index");
@@ -90,8 +96,8 @@ namespace SistemaOctoTi.Controllers
             home.Cliente.QtdEndereco = 1;
             home.Cliente.QtdTelefone = 1;
 
-          /*  home.Telefone.CodigoCliente = home.Cliente;
-            home.Endereco.CodigoCliente = home.Cliente;*/
+            home.Telefone.CodigoCliente = home.Cliente;
+            home.Endereco.CodigoCliente = home.Cliente;
 
             _clienteRepositorio.Adicionar(home.Cliente);
             _enderecoRepositorio.Adicionar(home.Endereco);

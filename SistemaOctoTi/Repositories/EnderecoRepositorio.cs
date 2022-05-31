@@ -21,6 +21,21 @@ namespace SistemaOctoTi.Repositories
             return endereco;
         }
 
+        public bool Apagar(int id)
+        {
+            EnderecoModel endereco = BuscarPorId(id);
+
+            if(endereco == null)
+            {
+                throw new Exception("Erro ao apagar Endereco!");
+            }
+
+            _bancoContext.Endereco.Remove(endereco);
+            _bancoContext.SaveChanges();
+
+            return true;
+        }
+
         public EnderecoModel Atualizar(EnderecoModel endereco)
         {
             EnderecoModel enderecoDB = BuscarPorId(endereco.Id);
@@ -43,14 +58,13 @@ namespace SistemaOctoTi.Repositories
 
             return enderecoDB;
 
-
         }
 
         public EnderecoModel BuscarPorId(int id)
         {
             return _bancoContext.Endereco.FirstOrDefault(x => x.Id == id);
         }
-
+             
         public List<EnderecoModel> BuscarTodos()
         {
             return _bancoContext.Endereco.ToList();
