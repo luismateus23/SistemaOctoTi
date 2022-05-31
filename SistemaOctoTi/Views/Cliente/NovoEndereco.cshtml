@@ -1,4 +1,5 @@
-﻿@{
+﻿@model  HomeIndexModel
+@{
     ViewData["Title"] = "Novo Endereço";
 }
 
@@ -7,16 +8,17 @@
 </div>
 
 <div data-offset="0" class="container container-menu mt-1">
-    <form class="container">
-                 
-     
-      <!-- -->
+    <form method="post" asp-action="NovoEndereco" asp-controller="Cliente" class="container">
+      
+  
+@*     <input type="text" asp-for="Endereco.CodigoCliente "/>*@
+
       <div class="row">
 
         <div class="form-group col-md">
             <label>Tipo Endereço:</label>
-            <select id="sltTipoEndereco" class="form-control">
-                <option value="1">Cobrança</option>
+            <select asp-for="Endereco.TipoEndereco" value="1"  id="sltTipoEndereco" class="form-control">
+                <option selected value="1">Cobrança</option>
                 <option value="2">Comercial</option>
                 <option value="3">Correspondência</option>
                 <option value="4">Entrega</option>
@@ -25,11 +27,11 @@
         </div>
         <div class="form-group col-md">
             <label>Logradouro:</label>
-            <input class="form-control" maxlength="45" type="text" id="txtLogradouro"  placeholder="Ex: Rua das Ameixas"  />
+            <input class="form-control" asp-for="Endereco.Logradouro" value="" maxlength="45" type="text" id="txtLogradouro"  placeholder="Ex: Rua das Ameixas"  />
         </div>
         <div class="form-group col-md">
             <label>Número:</label>
-               <input class="form-control"  min="0" max="1000" step="1.0" type="number" id="txtNumero"  placeholder="Ex: 2710" />
+               <input class="form-control" asp-for="Endereco.Numero"  value=""  min="0"  step="1.0" type="number" id="txtNumero"  placeholder="Ex: 2710" />
         </div>
 
       </div>
@@ -38,7 +40,7 @@
 
           <div class="form-group col-md">
              <label for="sltUF">UF:</label>
-            <select  class="form-control"  id="sltUF">
+            <select asp-for="Endereco.UF" value="1" class="form-control"  id="sltUF">
                 <option value="1">AC</option>
                 <option value="2">AL</option>
                 <option value="3">AP</option>
@@ -71,27 +73,25 @@
 
           <div class="form-group col-md">
               <label>Cidade: </label>
-              <input class="form-control" id="txtCidade" type="text" maxlength="45" placeholder="Ex: São Paulo" />
+              <input class="form-control" asp-for="Endereco.Cidade" value="" id="txtCidade" type="text" maxlength="45" placeholder="Ex: São Paulo" />
           </div> 
 
           <div class="form-group col-md">
                  <label>CEP: </label>
-              <input class="form-control" id="txtCEP" type="text" maxlength="9" placeholder="Ex: 15091-250" />
+              <input class="form-control" asp-for="Endereco.CEP" value="" id="txtCEP" type="text" maxlength="9" placeholder="Ex: 15091-250" />
           </div> 
       </div>
     
       <div class="row">
           <div class="form-group col-md">
               <label>Complemento:</label>
-              <input type="text" id="txtComplemento" maxlength="45"  class="form-control" placeholder="Ex: Portão Preto." />
+              <input type="text" id="txtComplemento" asp-for="Endereco.Complemento" value="" maxlength="45"  class="form-control" placeholder="Ex: Portão Preto." />
           </div>
            <div class="form-group col-md">
                <label>Bairro:</label>
-               <input type="text" id="txtBairro" maxlength="45" class="form-control" placeholder="Ex: Jd. das Rosas"/>
+               <input type="text" id="txtBairro" asp-for="Endereco.Bairro" value="" maxlength="45" class="form-control" placeholder="Ex: Jd. das Rosas"/>
           </div>
-      </div>
-
-                     
+      </div>                     
 
       <div class=row>                
               <div class="form-group col-md">

@@ -16,6 +16,7 @@ namespace SistemaOctoTi.Repositories
 
         public TelefoneModel Adicionar(TelefoneModel telefone)
         {
+            
             _bancoContext.Telefone.Add(telefone);
             _bancoContext.SaveChanges();
 
@@ -46,7 +47,7 @@ namespace SistemaOctoTi.Repositories
 
             telefoneDB.TipoTelefone = telefone.TipoTelefone;
             telefoneDB.DDD = telefone.DDD;
-            telefoneDB.NumeroTelefone = telefone.NumeroTelefone;
+            telefoneDB.NumeroTelefone = telefone.NumeroTelefone;  
 
             _bancoContext.Telefone.Update(telefoneDB);
             _bancoContext.SaveChanges();

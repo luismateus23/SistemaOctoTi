@@ -15,6 +15,7 @@ namespace SistemaOctoTi.Repositories
         }
         public EnderecoModel Adicionar(EnderecoModel endereco)
         {
+
             _bancoContext.Endereco.Add(endereco);
             _bancoContext.SaveChanges();
 
@@ -64,6 +65,7 @@ namespace SistemaOctoTi.Repositories
         {
             return _bancoContext.Endereco.FirstOrDefault(x => x.Id == id);
         }
+          
              
         public List<EnderecoModel> BuscarTodos()
         {

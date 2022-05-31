@@ -56,19 +56,30 @@ namespace SistemaOctoTi.Controllers
         public IActionResult NovoTelefone(int id)
         {
             HomeIndexModel home = new HomeIndexModel();
+       
 
             home.Cliente = _clienteRepositorio.BuscarPorId(id);
             home.Endereco = _enderecoRepositorio.BuscarPorId(id);
-            home.Telefone =  _telefoneRepositorio.BuscarPorId(id);         
+            home.Telefone =  _telefoneRepositorio.BuscarPorId(id);
+
+
+            /*home.Telefone.CodigoCliente = home.Endereco.CodigoCliente;*/
+
 
             return View(home);
         }
 
         public IActionResult NovoEndereco(int id)
         {
-            EnderecoModel endereco = _enderecoRepositorio.BuscarPorId(id);
+            HomeIndexModel home = new HomeIndexModel();
+            
+            home.Cliente = _clienteRepositorio.BuscarPorId(id);
+            home.Endereco = _enderecoRepositorio.BuscarPorId(id);
+            home.Telefone = _telefoneRepositorio.BuscarPorId(id);
 
-            return View(endereco);
+            /*home.Endereco.CodigoCliente = home.Telefone.CodigoCliente;*/
+
+            return View(home);
         }
 
         public IActionResult Apagar(int id)
@@ -76,6 +87,18 @@ namespace SistemaOctoTi.Controllers
             _enderecoRepositorio.Apagar(id);
             _telefoneRepositorio.Apagar(id);
             _clienteRepositorio.Apagar(id);
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult NovoEndereco(HomeIndexModel home)
+        {
+        /*
+            Uma opção: Estudar o método Criar [httppost]
+         */                     
+
+            _enderecoRepositorio.Adicionar(home.Endereco);
 
             return RedirectToAction("Index");
         }
@@ -95,7 +118,7 @@ namespace SistemaOctoTi.Controllers
 
             home.Cliente.QtdEndereco = 1;
             home.Cliente.QtdTelefone = 1;
-
+          
             home.Telefone.CodigoCliente = home.Cliente;
             home.Endereco.CodigoCliente = home.Cliente;       
 

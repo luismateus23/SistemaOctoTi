@@ -11,10 +11,13 @@
 
     <form method="post" asp-action="NovoTelefone" asp-controller="Cliente" class="container">
 
+
+@*    <input type="text" asp-for="Telefone.CodigoCliente"/>*@
+             
       <div class="row">
           <div class="form-group col-md">
               <label>Tipo Telefone:</label>
-              <select  asp-for="Telefone.TipoTelefone" id="sltTelefone" class="form-control">
+              <select  value="1" asp-for="Telefone.TipoTelefone" id="sltTelefone" class="form-control">
                   <option value="1">Celular</option>
                   <option value="2">Residencial</option>
                   <option value="3">Comercial</option>
@@ -24,12 +27,12 @@
   
           <div id="divNumeroTelefone" class="form-group col-md">
               <label id="lblNumeroTelefone">Celular:</label>
-              <input asp-for="Telefone.NumeroTelefone" type="text"  id="txtNumeroTelefone" placeholder="00000-0000"  onpaste="return false" maxlength="10"  class="form-control" />
+              <input asp-for="Telefone.NumeroTelefone" value=""type="text"  id="txtNumeroTelefone" placeholder="00000-0000"  onpaste="return false" maxlength="10"  class="form-control" />
           </div>
 
           <div class="form-group col-md">
               <label>DDD:</label>
-              <input asp-for="Telefone.DDD" type="text" maxlength="3" id="txtDDD" placeholder="Ex: 017" class="form-control" />
+              <input asp-for="Telefone.DDD" value="" type="text" maxlength="3" id="txtDDD" placeholder="Ex: 017" class="form-control" />
           </div>       
 
       </div>
