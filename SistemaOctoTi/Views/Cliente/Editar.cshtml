@@ -8,7 +8,7 @@
 </div>
 
 <div class="container container-menu mt-1">
-    <form class="container" method="post" asp-action="Editar" asp-controller="Cliente">
+    <form class="container" method="post" onsubmit="return validar()" asp-action="Editar" asp-controller="Cliente">
 
     <input type="hidden" asp-for="Cliente.Id"/>
     <input type="hidden" asp-for="Telefone.Id"/>

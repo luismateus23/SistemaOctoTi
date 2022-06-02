@@ -7,17 +7,27 @@
      <h1 class="display-4">Novo Telefone</h1>
 </div>
 
-<div data-offset="0" class="container container-menu mt-1">
+<div class="container container-menu mt-1">
 
-    <form method="post" asp-action="NovoTelefone" asp-controller="Cliente" class="container">
+    <form method="post" asp-action="NovoTelefone" onsubmit="return validarTelefone()" asp-controller="Cliente" class="container">
 
 
-@*    <input type="text" asp-for="Telefone.CodigoCliente"/>*@
-             
+        <input type="hidden" asp-for="Cliente.Id" />
+
+        <input type="hidden" asp-for="Cliente.Nome" />
+        <input type="hidden" asp-for="Cliente.Email" />
+        <input type="hidden" asp-for="Cliente.TipoCliente" />
+        <input type="hidden" asp-for="Cliente.CPF_CNPJ" />
+        <input type="hidden" asp-for="Cliente.RG_IE" />
+        <input type="hidden" asp-for="Cliente.DataNascimento_DataFundacao" />
+        <input type="hidden" asp-for="Cliente.DataCadastro" />
+        <input type="hidden" asp-for="Cliente.QtdTelefone" />
+        <input type="hidden" asp-for="Cliente.QtdEndereco" />
+   
       <div class="row">
           <div class="form-group col-md">
               <label>Tipo Telefone:</label>
-              <select  value="1" asp-for="Telefone.TipoTelefone" id="sltTelefone" class="form-control">
+              <select   asp-for="Telefone.TipoTelefone" value="1" id="sltTelefone" class="form-control">
                   <option value="1">Celular</option>
                   <option value="2">Residencial</option>
                   <option value="3">Comercial</option>
@@ -27,7 +37,7 @@
   
           <div id="divNumeroTelefone" class="form-group col-md">
               <label id="lblNumeroTelefone">Celular:</label>
-              <input asp-for="Telefone.NumeroTelefone" value=""type="text"  id="txtNumeroTelefone" placeholder="00000-0000"  onpaste="return false" maxlength="10"  class="form-control" />
+              <input asp-for="Telefone.NumeroTelefone" value="" type="text"  id="txtNumeroTelefone" placeholder="00000-0000"  onpaste="return false" maxlength="10"  class="form-control" />
           </div>
 
           <div class="form-group col-md">
@@ -51,3 +61,17 @@
     </form>
 
 </div>
+
+<script>
+ 
+window.onload = updatePage();
+
+function updatePage() {
+
+    var sltTelefone = document.querySelector('#sltTelefone');
+    sltTelefone.value = 1;
+
+}
+
+
+</script>

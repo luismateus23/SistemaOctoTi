@@ -3,22 +3,34 @@
     ViewData["Title"] = "Novo Endereço";
 }
 
+
 <div class="container container-menu text-center">
      <h1 class="display-4">Novo Endereço</h1>
 </div>
 
 <div data-offset="0" class="container container-menu mt-1">
-    <form method="post" asp-action="NovoEndereco" asp-controller="Cliente" class="container">
+    <form method="post" asp-action="NovoEndereco" onsubmit="return validarEndereco()" asp-controller="Cliente" class="container">
       
-  
-@*     <input type="text" asp-for="Endereco.CodigoCliente "/>*@
 
       <div class="row">
+
+        <input type="hidden" asp-for="Cliente.Id" />
+          
+        <input type="hidden" asp-for="Cliente.Nome" />
+        <input type="hidden" asp-for="Cliente.Email" />
+        <input type="hidden" asp-for="Cliente.TipoCliente" />
+        <input type="hidden" asp-for="Cliente.CPF_CNPJ" />
+        <input type="hidden" asp-for="Cliente.RG_IE" />
+        <input type="hidden" asp-for="Cliente.DataNascimento_DataFundacao" />
+        <input type="hidden" asp-for="Cliente.DataCadastro" />
+        <input type="hidden" asp-for="Cliente.QtdTelefone" />
+        <input type="hidden" asp-for="Cliente.QtdEndereco" />
+
 
         <div class="form-group col-md">
             <label>Tipo Endereço:</label>
             <select asp-for="Endereco.TipoEndereco" value="1"  id="sltTipoEndereco" class="form-control">
-                <option selected value="1">Cobrança</option>
+                <option value="1">Cobrança</option>
                 <option value="2">Comercial</option>
                 <option value="3">Correspondência</option>
                 <option value="4">Entrega</option>
@@ -40,34 +52,34 @@
 
           <div class="form-group col-md">
              <label for="sltUF">UF:</label>
-            <select asp-for="Endereco.UF" value="1" class="form-control"  id="sltUF">
-                <option value="1">AC</option>
-                <option value="2">AL</option>
-                <option value="3">AP</option>
-                <option value="4">AM</option>
-                <option value="5">BA</option>
-                <option value="6">CE</option>
-                <option value="7">DF</option>
-                <option value="8">ES</option>
-                <option value="9">GO</option>
-                <option value="10">MA</option>
-                <option value="11">MT</option>
-                <option value="12">MS</option>
-                <option value="13">MG</option>
-                <option value="14">PA</option>
-                <option value="15">PB</option>
-                <option value="16">PR</option>
-                <option value="17">PE</option>
-                <option value="18">PI</option>
-                <option value="19">RJ</option>
-                <option value="20">RN</option>
-                <option value="21">RS</option>
-                <option value="22">RO</option>
-                <option value="23">RR</option>
-                <option value="24">SP</option>
-                <option value="25">SC</option>
-                <option value="26">SE</option>
-                <option value="27">TO</option>
+            <select asp-for="Endereco.UF" value="AC" class="form-control"  id="sltUF">
+                <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AP">AP</option>
+                <option value="AM">AM</option>
+                <option value="BA">BA</option>
+                <option value="CE">CE</option>
+                <option value="DF">DF</option>
+                <option value="ES">ES</option>
+                <option value="GO">GO</option>
+                <option value="MA">MA</option>
+                <option value="MT">MT</option>
+                <option value="MS">MS</option>
+                <option value="MG">MG</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PR">PR</option>
+                <option value="PE">PE</option>
+                <option value="PI">PI</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RS">RS</option>
+                <option value="RO">RO</option>
+                <option value="RR">RR</option>
+                <option value="SP">SP</option>
+                <option value="SC">SC</option>
+                <option value="SE">SE</option>
+                <option value="TO">TO</option>
             </select>
           </div> 
 
@@ -105,3 +117,20 @@
     </form>
 
 </div>
+
+<script>
+ 
+window.onload = updatePage();
+
+function updatePage() {
+
+    var sltEndereco = document.querySelector('#sltTipoEndereco');
+    sltEndereco.value = 1;
+
+    var sltUF = document.querySelector('#sltUF');   
+    sltUF.value = "AC";
+
+}
+
+
+</script>

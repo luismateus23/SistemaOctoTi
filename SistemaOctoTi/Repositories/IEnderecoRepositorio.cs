@@ -9,6 +9,7 @@ namespace SistemaOctoTi.Repositories
         EnderecoModel Atualizar(EnderecoModel endereco);
         EnderecoModel BuscarPorId(int id);  
         List<EnderecoModel> BuscarTodos();
-        EnderecoModel Adicionar(EnderecoModel endereco);   
+        EnderecoModel Adicionar(EnderecoModel endereco);
+        HomeIndexModel AdicionarHome(HomeIndexModel endereco);
     }
 }

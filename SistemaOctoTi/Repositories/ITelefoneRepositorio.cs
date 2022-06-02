@@ -10,5 +10,6 @@ namespace SistemaOctoTi.Repositories
         TelefoneModel BuscarPorId(int id);  
         List<TelefoneModel> BuscarTodos();
         TelefoneModel Adicionar(TelefoneModel telefone);
+        HomeIndexModel AdicionarHome(HomeIndexModel telefone);
     }
 }

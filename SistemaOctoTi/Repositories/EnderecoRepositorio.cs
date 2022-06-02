@@ -22,6 +22,15 @@ namespace SistemaOctoTi.Repositories
             return endereco;
         }
 
+        public HomeIndexModel AdicionarHome(HomeIndexModel home)
+        {
+
+            _bancoContext.Endereco.Add(home.Endereco);
+            _bancoContext.SaveChanges();
+
+            return home;
+        }
+
         public bool Apagar(int id)
         {
             EnderecoModel endereco = BuscarPorId(id);

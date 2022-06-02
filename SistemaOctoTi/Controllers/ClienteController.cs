@@ -10,7 +10,7 @@ namespace SistemaOctoTi.Controllers
         private readonly IClienteRepositorio _clienteRepositorio;
         private readonly IEnderecoRepositorio _enderecoRepositorio;
         private readonly ITelefoneRepositorio _telefoneRepositorio;
-        public ClienteController(IClienteRepositorio clienteRepositorio,IEnderecoRepositorio enderecoRepositorio, ITelefoneRepositorio telefoneRepositorio)
+        public ClienteController(IClienteRepositorio clienteRepositorio, IEnderecoRepositorio enderecoRepositorio, ITelefoneRepositorio telefoneRepositorio)
         {
             _clienteRepositorio = clienteRepositorio;
             _enderecoRepositorio = enderecoRepositorio;
@@ -35,7 +35,7 @@ namespace SistemaOctoTi.Controllers
 
             model.Cliente = _clienteRepositorio.BuscarPorId(id);
             model.Telefone = _telefoneRepositorio.BuscarPorId(id);
-            model.Endereco = _enderecoRepositorio.BuscarPorId(id);           
+            model.Endereco = _enderecoRepositorio.BuscarPorId(id);
 
 
             return View(model);
@@ -56,14 +56,11 @@ namespace SistemaOctoTi.Controllers
         public IActionResult NovoTelefone(int id)
         {
             HomeIndexModel home = new HomeIndexModel();
-       
+
 
             home.Cliente = _clienteRepositorio.BuscarPorId(id);
             home.Endereco = _enderecoRepositorio.BuscarPorId(id);
-            home.Telefone =  _telefoneRepositorio.BuscarPorId(id);
-
-
-            /*home.Telefone.CodigoCliente = home.Endereco.CodigoCliente;*/
+            home.Telefone = _telefoneRepositorio.BuscarPorId(id);                    
 
 
             return View(home);
@@ -72,12 +69,10 @@ namespace SistemaOctoTi.Controllers
         public IActionResult NovoEndereco(int id)
         {
             HomeIndexModel home = new HomeIndexModel();
-            
+
             home.Cliente = _clienteRepositorio.BuscarPorId(id);
             home.Endereco = _enderecoRepositorio.BuscarPorId(id);
             home.Telefone = _telefoneRepositorio.BuscarPorId(id);
-
-            /*home.Endereco.CodigoCliente = home.Telefone.CodigoCliente;*/
 
             return View(home);
         }
@@ -94,11 +89,12 @@ namespace SistemaOctoTi.Controllers
         [HttpPost]
         public IActionResult NovoEndereco(HomeIndexModel home)
         {
-        /*
-            Uma opção: Estudar o método Criar [httppost]
-         */                     
 
-            _enderecoRepositorio.Adicionar(home.Endereco);
+            _enderecoRepositorio.AdicionarHome(home);
+
+            home.Endereco.CodigoCliente = home.Cliente;
+            home.Cliente.QtdEndereco++;
+            _enderecoRepositorio.Atualizar(home.Endereco);
 
             return RedirectToAction("Index");
         }
@@ -106,21 +102,25 @@ namespace SistemaOctoTi.Controllers
         [HttpPost]
         public IActionResult NovoTelefone(HomeIndexModel home)
         {
+
+            _telefoneRepositorio.AdicionarHome(home);
+
             home.Telefone.CodigoCliente = home.Cliente;
-            _telefoneRepositorio.Adicionar(home.Telefone);
+            home.Cliente.QtdTelefone++;
+            _telefoneRepositorio.Atualizar(home.Telefone);
 
             return RedirectToAction("Index");
         }
 
-        [HttpPost] 
+        [HttpPost]
         public IActionResult Criar(HomeIndexModel home)
         {
 
             home.Cliente.QtdEndereco = 1;
             home.Cliente.QtdTelefone = 1;
-          
+
             home.Telefone.CodigoCliente = home.Cliente;
-            home.Endereco.CodigoCliente = home.Cliente;       
+            home.Endereco.CodigoCliente = home.Cliente;
 
 
             _clienteRepositorio.Adicionar(home.Cliente);

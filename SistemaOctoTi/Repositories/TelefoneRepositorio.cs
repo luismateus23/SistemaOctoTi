@@ -15,13 +15,22 @@ namespace SistemaOctoTi.Repositories
         }
 
         public TelefoneModel Adicionar(TelefoneModel telefone)
-        {
-            
+        {                      
             _bancoContext.Telefone.Add(telefone);
             _bancoContext.SaveChanges();
 
             return telefone;    
         }
+
+        public HomeIndexModel AdicionarHome(HomeIndexModel home)
+        {
+                     
+            _bancoContext.Telefone.Add(home.Telefone);
+            _bancoContext.SaveChanges();
+
+            return home;
+        }
+
 
         public bool Apagar(int id)
         {
@@ -47,7 +56,8 @@ namespace SistemaOctoTi.Repositories
 
             telefoneDB.TipoTelefone = telefone.TipoTelefone;
             telefoneDB.DDD = telefone.DDD;
-            telefoneDB.NumeroTelefone = telefone.NumeroTelefone;  
+            telefoneDB.NumeroTelefone = telefone.NumeroTelefone;
+
 
             _bancoContext.Telefone.Update(telefoneDB);
             _bancoContext.SaveChanges();

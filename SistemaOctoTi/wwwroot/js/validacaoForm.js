@@ -12,12 +12,69 @@ var txtTelefone = document.querySelector('#txtNumeroTelefone');
 
 var txtDDD = document.querySelector('#txtDDD');
 
+var sltEndereco = document.querySelector('#sltTipoEndereco');
+
 var txtLogradouro = document.querySelector('#txtLogradouro');
 var txtNumero = document.querySelector('#txtNumero');
 var txtCidade = document.querySelector('#txtCidade');
 var txtCEP = document.querySelector('#txtCEP');
 var txtComplemento = document.querySelector('#txtComplemento');
 var txtBairro = document.querySelector('#txtBairro');
+
+
+
+function validarEndereco() {
+    /*Verificação Fraca*/
+    if (txtLogradouro.value.length <= 5) {
+        alert('Preencha o campo [Logradouro] corretamente!');
+        return false;
+    }
+    /*Verificação Fraca*/
+    if (txtNumero.value.length <= 0) {
+        alert('Preencha o campo [Número] corretamente!');
+        return false;
+    }
+    /*Verificação Fraca*/
+    if (txtCidade.value.length <= 2) {
+        alert('Preencha o campo [Cidade] corretamente!');
+        return false;
+    }
+
+    if (txtCEP.value.length < 9) {
+        alert('Preencha o campo [CEP] corretamente!');
+        return false;
+    }
+    /*Verificação Fraca*/
+    if (txtBairro.value.length <= 4) {
+        alert('Preencha o campo [Bairro] corretamente!');
+        return false;
+    }
+}
+
+function validarTelefone() {
+
+    if (txtTelefone.value.length < 10 && sltTelefone.value == 1) {
+        alert('Preencha o campo [Celular] corretamente!');
+        return false;
+    }
+
+    if (txtTelefone.value.length < 9 && sltTelefone.value == 2) {
+        alert('Preencha o campo [Residencial] corretamente!');
+        return false;
+    }
+
+    if (txtTelefone.value.length < 9 && sltTelefone.value == 3) {
+        alert('Preencha o campo [Comercial] corretamente!');
+        return false;
+    }
+
+    if (txtDDD.value.length < 2 || txtDDD.value.length > 3) {
+        alert('Preencha o campo [DDD] corretamente!');
+        return false;
+    }
+
+}
+
 
 function validar() {
 
